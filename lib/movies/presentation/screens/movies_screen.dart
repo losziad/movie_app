@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:movies_app/core/services/services_locator.dart';
+import 'package:movies_app/core/utils/app_strings.dart';
 import 'package:movies_app/core/utils/constants.dart';
 import 'package:movies_app/core/utils/dummy.dart';
 import 'package:movies_app/movies/presentation/components/now_playing_component.dart';
@@ -21,9 +22,8 @@ class MoviesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => sl<MoviesBloc>()..add(GetNowPlayingMoviesEvent())..add(GetPopularMoviesEvent()),
+      create: (context) => sl<MoviesBloc>()..add(GetNowPlayingMoviesEvent())..add(GetPopularMoviesEvent())..add(GetTopRatedMoviesEvent()),
       child: Scaffold(
-        backgroundColor: Colors.grey.shade900,
         body: SingleChildScrollView(
           key: const Key('movieScrollView'),
           child: Column(
@@ -36,7 +36,7 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Popular",
+                      AppString.popular,
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         color: Colors.white,
@@ -53,7 +53,7 @@ class MoviesScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -82,7 +82,7 @@ class MoviesScreen extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Top Rated",
+                      AppString.topRated,
                       style: GoogleFonts.poppins(
                         fontSize: 19,
                         fontWeight: FontWeight.w500,
@@ -99,7 +99,7 @@ class MoviesScreen extends StatelessWidget {
                         child: Row(
                           children: [
                             Text(
-                              'See More',
+                              AppString.seeMore,
                               style: TextStyle(
                                 color: Colors.white,
                               ),
@@ -125,3 +125,4 @@ class MoviesScreen extends StatelessWidget {
     );
   }
 }
+       

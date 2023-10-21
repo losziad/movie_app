@@ -3,7 +3,6 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:movies_app/core/utils/constants.dart';
-import 'package:movies_app/core/utils/dummy.dart';
 import 'package:movies_app/core/utils/enums.dart';
 import 'package:movies_app/movies/presentation/controller/movies_bloc.dart';
 import 'package:movies_app/movies/presentation/controller/movies_state.dart';
@@ -12,14 +11,12 @@ import 'package:shimmer/shimmer.dart';
 class TopRatedComponent extends StatelessWidget {
   const TopRatedComponent({super.key});
 
-
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<MoviesBloc, MoviesState>(
       buildWhen: (previous, current) => previous.topRatedState != current.topRatedState,
       builder: (context, state) {
-        switch(state.topRatedState)
-            {
+        switch(state.topRatedState) {
           case RequestState.loading:
             const SizedBox(
                 height: 170.0,
